@@ -1,0 +1,40 @@
+// root log in
+
+select user from mysql.user;
+select host,user from mysql.user;
+
+create user todo@localhost identified by 'test';
+select use, host from mysql.user;
+
+Alter user todo@localhost identified by 'test*';
+grant all privileges on *.* to todo@localhost with grant option;
+
+//exit and launch cmd
+
+mysql -u todo -p
+
+// log in
+
+create database todo;
+use todo;
+select database();
+
+create table if not exists user(
+id int unsigned auto_increment,
+name varchar(100) not null,
+primary key(id)
+)engine=InnoDB DEFAULT CHARSET=utf8;
+
+show variables like 'auto_increment%';
+
+// set auto_increment_offset=...
+
+insert into user (id,name) values (1,'qwq');
+delete from user where name='qwq';
+
+
+
+
+
+
+
