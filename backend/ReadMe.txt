@@ -1,0 +1,13 @@
+由于上周在做导师的科研课题最近几天才开始做，发现需要学的内容比想象的要多，完成难免有些仓促，见谅。
+
+1.0-1.2的代码文件可以在database-operation文件夹中找到，其中：
+mysql代码存在txt文档中，mongodb部分在子文件夹go-mongodb中可以找到，gorm框架及借助gorm的网络管理(1.2)代码部分保存在子文件夹gorm_demo中，内部也有相应readMe.txt文件
+
+response在database-operation中也可找到
+之后midware在real-backend中
+
+一开始对自己写的包调用没有什么概念（程设课程实践那种大项目我都是把包写好全塞一个文件夹include），每个.go文件都写package main，于是安排项目架构的时候单独复制出来修改了package放到real-backend的各个子文件夹
+
+截止到ddl，目前real-backend中的项目架构编排自认为有些乱，import其他手写的module路径时vscode会报错，网上搜了import的方法感觉写的好像是对的，有可能是vscode环境问题（因为刚开始做的时候都是用cmd单独run程序没有配置vscode的go项目环境），接下来几天把手头工作做完会陆续调试并更新repository
+
+部分内容（.gitignore写法，别处调用response的方法，midware接口设置等）感觉还未学全，之后将陆续补上

@@ -1,0 +1,14 @@
+{host}/api/todo/get
+[GET]
+
+[params]
+query: ?id={todo_id}
+
+[response]
+{
+  "id":"int",
+  "title":"string",
+  "content":"string"
+}
+
+// from Feishu

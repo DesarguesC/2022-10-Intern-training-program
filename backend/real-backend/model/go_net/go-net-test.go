@@ -1,4 +1,4 @@
-package mani
+package go_net
 
 import (
 	"fmt";
@@ -10,25 +10,25 @@ import (
 	"log";
 	//"flybitch/go-net/model"
 )
-func main() {
+// func main() {
 
-	e := echo.New()
-	e.GET("/hello", read_body)
-	e.Start("127.0.0.1:80")
-	fmt.Println("first")
+// 	e := echo.New()
+// 	e.GET("/hello", read_body)
+// 	e.Start("127.0.0.1:80")
+// 	fmt.Println("first")
 
-	// e.GET("/xyz", QueryParam)
-	// e.Start("127.0.0.1:80")
-	// fmt.Println("second")
+// 	// e.GET("/xyz", QueryParam)
+// 	// e.Start("127.0.0.1:80")
+// 	// fmt.Println("second")
 
-	// server := http.Server {
-	// 	Addr: "127.0.0.1:80",
-	// }
-	// http.HandleFunc("/hello-s", read_body)
-	// server.ListenAndServe()
-	// fmt.Println("third")
+// 	// server := http.Server {
+// 	// 	Addr: "127.0.0.1:80",
+// 	// }
+// 	// http.HandleFunc("/hello-s", read_body)
+// 	// server.ListenAndServe()
+// 	// fmt.Println("third")
 
-}
+// }
 
 func Ping(c echo.Context) error {
 	return c.String(http.StatusOK, "pong!")
@@ -37,7 +37,7 @@ func Ping(c echo.Context) error {
 func QueryParam(c echo.Context) error {
 	query := c.QueryParam("query")
 	// QueryParam-查询参数		Param-路径参数
-	// (utf-8)
+	// (↑utf-8)
 	//fmt.Println(query)
 	return c.String(http.StatusOK, query)
 }

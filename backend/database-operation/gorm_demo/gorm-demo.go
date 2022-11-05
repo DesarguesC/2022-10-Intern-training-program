@@ -3,36 +3,12 @@ package main
 import (
 	"fmt";
 	"log";
-	"gorm.io/driver/mysql";
-	"gorm.io/gorm";
   )
-type Users struct {
-	//gorm.Model
-	Id uint `gorm:"primary_key"`
-	Name string
-	Passwd string
-}
-type Todos struct{
-	Id uint `gorm:"promary_key"`
-	User_id uint
-	tittle string
-	content string
-}
-// create table
-  
 func main() {
-	url := "root:Cd2003527!?#@(127.0.0.1:3306)/todo?charset=utf8&parseTime=True&loc=Local"
-	// database name: todo
-	db, err := gorm.Open(mysql.Open(url), &gorm.Config{})
-	if err != nil {
-		log.Fatal(err)
-		// or another: panic("....(error messages)")
-	}
 
-	db.AutoMigrate(&Users{})
-	// 	create table: Users
-
+	Init()
 	// insertion
+
 	a_user := Users{1,"chen","12321"}
 	err = db.Debug().Create(&a_user).Error
 	if err != nil {
@@ -48,7 +24,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 
 	// query
 	x_user := Users{}
@@ -75,10 +50,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	db.AutoMigrate(&Todos{})
-	// create table: Todos
 	// the same
-
 	// insertion
 	aa_user := Todos{1,123,"chen","12321"}
 	err = db.Debug().Create(&aa_user).Error
@@ -120,7 +92,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 
 	fmt.Println("All've been finished.")
 
