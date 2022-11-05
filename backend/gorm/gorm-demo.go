@@ -21,8 +21,8 @@ type Todos struct{
 // create table
   
 func main() {
-	url := "root:Cd2003527!?#@(127.0.0.1:3306)/tmp?charset=utf8&parseTime=True&loc=Local"
-	// database name: tmp
+	url := "root:Cd2003527!?#@(127.0.0.1:3306)/todo?charset=utf8&parseTime=True&loc=Local"
+	// database name: todo
 	db, err := gorm.Open(mysql.Open(url), &gorm.Config{})
 	if err != nil {
 		log.Fatal(err)
@@ -122,7 +122,7 @@ func main() {
 	}
 
 
-	fmt.Println("All've benn finished.")
+	fmt.Println("All've been finished.")
 
 }
 

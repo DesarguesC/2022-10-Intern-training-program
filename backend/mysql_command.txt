@@ -1,4 +1,4 @@
-// root log in
+// root log in client
 
 select user from mysql.user;
 select host,user from mysql.user;
