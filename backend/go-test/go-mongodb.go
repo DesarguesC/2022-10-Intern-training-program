@@ -31,7 +31,7 @@ func main() {
 	// link the database
 	// 
 	
-	insert(collection)
+	insert(collection) //create new user
 
 	delete(collection)
 
@@ -55,7 +55,7 @@ func update(collection *mongo.Collection) {
 		"$inc": bson.M {
 			"name": x,
 		},
-	}
+	}// search to update
 	updateResult, err := collection.UpdateOne(context.TODO(), filter, update_)
 	if err != nil {
 		log.Fatal(err)
@@ -71,6 +71,7 @@ func insert(collection *mongo.Collection) {
 	)
 	fmt.Scanf("%d %s\n", &x, &y)
 	insertResult, err := collection.InsertOne(context.TODO(), one{x, y})
+	// apparently it's insertion
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -81,6 +82,7 @@ func delete(collection *mongo.Collection) {
 	var x string
 	fmt.Scanf("%s\n", &x)
 	deleteResult1, err := collection.DeleteOne(context.TODO(), bson.M{"name": x})
+	// apparently it's insertion
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -94,6 +96,7 @@ func read(collection *mongo.Collection) {
 	filter := bson.M{"name": x}
 	var result one
 	err := collection.FindOne(context.TODO(), filter).Decode(&result)
+	// apparently it's...
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -108,6 +111,7 @@ func read(collection *mongo.Collection) {
 	if err != nil {
 		log.Fatal(err)
 	}
+	// apparently
 	for curr.Next(context.TODO()) {
 		var ele one
 		err := curr.Decode(&ele)
