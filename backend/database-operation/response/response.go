@@ -18,4 +18,3 @@ func ToResponse(c echo.Context, code int, msg string, data ...interface{}) error
 	})
 }
 
-// 手动copy 狗头保命

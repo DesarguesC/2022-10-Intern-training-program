@@ -1,38 +1,40 @@
 package go_net
 
 import (
-	"fmt";
-	"net/http";
-	"github.com/labstack/echo/v4";
-	"io/ioutil";
+	"fmt"
+	"github.com/labstack/echo/v4"
+	"io/ioutil"
+	"net/http"
 	//"github.com/go-playground/validator";
 	//"encoding/json";
-	"log";
+	"log"
 	//"flybitch/go-net/model"
 )
-func main() {
 
-	e := echo.New()
-	e.GET("/hello", read_body)
-	e.Start("127.0.0.1:80")
-	fmt.Println("first")
+//func main() {
 
-	// e.GET("/xyz", QueryParam)
-	// e.Start("127.0.0.1:80")
-	// fmt.Println("second")
+//e := echo.New()
+//e.GET("/hello", read_body)
+//e.Start("127.0.0.1:80")
+//fmt.Println("first")
+//
+// e.GET("/xyz", QueryParam)
+// e.Start("127.0.0.1:80")
+// fmt.Println("second")
 
-	// server := http.Server {
-	// 	Addr: "127.0.0.1:80",
-	// }
-	// http.HandleFunc("/hello-s", read_body)
-	// server.ListenAndServe()
-	// fmt.Println("third")
+// server := http.Server {
+// 	Addr: "127.0.0.1:80",
+// }
+// http.HandleFunc("/hello-s", read_body)
+// server.ListenAndServe()
+// fmt.Println("third")
 
-}
+//}
 
 func Ping(c echo.Context) error {
 	return c.String(http.StatusOK, "pong!")
 }
+
 // Ping: for judgement
 func QueryParam(c echo.Context) error {
 	query := c.QueryParam("query")
@@ -41,8 +43,8 @@ func QueryParam(c echo.Context) error {
 	//fmt.Println(query)
 	return c.String(http.StatusOK, query)
 }
-// Print parameter 'query' directly
 
+// Print parameter 'query' directly
 
 // func read_body(rw http.ResponseWriter, req *http.Request) {
 // 	length := req.ContentLength
@@ -55,7 +57,7 @@ func QueryParam(c echo.Context) error {
 func read_body(c echo.Context) error {
 	defer c.Request().Body.Close()
 	body, err := ioutil.ReadAll(c.Request().Body)
-	if  err != nil {
+	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Println(&body)

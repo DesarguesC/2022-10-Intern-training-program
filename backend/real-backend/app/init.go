@@ -1,9 +1,8 @@
 package app
 
 import (
+	"fmt"
 	"github.com/labstack/echo/v4"
-	"github.com/sirupsen/logrus"
-	"flybitch/utils"
 )
 
 var e *echo.Echo

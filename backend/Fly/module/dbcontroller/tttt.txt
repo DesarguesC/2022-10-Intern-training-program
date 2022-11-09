@@ -1,0 +1,161 @@
+package main
+
+import (
+	"fmt";
+	"log";
+	"github.com/sirupsen/logrus";
+	"github.com/spf13/viper";
+	"gorm.io/driver/mysql";
+	"gorm.io/gorm"
+  )
+// create table
+type Users struct {
+	//gorm.Model
+	Id uint `gorm:"primary_key"`
+	Name string
+	Passwd string
+}
+type Todos struct{
+	Id uint `gorm:"promary_key"`
+	User_id uint
+	tittle string
+	content string
+}
+var db *gorm.DB
+var err error
+func main() {
+	Init()
+	// insertion
+	a_user := Users{1,"chen","12321"}
+	err = db.Debug().Create(&a_user).Error
+	if err != nil {
+		log.Fatal(err)
+	}
+	//logrus.Panic("here")
+	b_user := Users{3,"ding","xxx"}
+	c_user := Users{4,"qwq","233333"}
+	err = db.Debug().Create(&b_user).Error
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = db.Debug().Create(&c_user).Error
+	if err != nil {
+		log.Fatal(err)
+	}
+
+
+	// query
+	x_user := Users{}
+	x_user.Id = 3
+	err = db.Debug().Find(&x_user).Error
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(x_user)
+
+	// update
+	y_user := Users{}
+	y_user.Id = 4
+	y_user.Passwd = ("333332")	// StringFrom ?
+	err = db.Debug().Updates(&y_user).Error
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// delete
+	z_user := Users{Id:3}
+	err = db.Debug().Delete(&z_user).Error
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	
+	// the same
+
+	// insertion
+	aa_user := Todos{1,123,"chen","12321"}
+	err = db.Debug().Create(&aa_user).Error
+	if err != nil {
+		log.Fatal(err)
+	}
+	bb_user := Todos{3,111,"ding","xxx"}
+	cc_user := Todos{4,233,"ok","233333"}
+	err = db.Debug().Create(&bb_user).Error
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = db.Debug().Create(&cc_user).Error
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// query
+	xx_user := Todos{}
+	xx_user.Id = 3
+	err = db.Debug().Find(&xx_user).Error
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(x_user)
+
+	// update
+	yy_user := Todos{}
+	yy_user.Id = 4
+	yy_user.content = ("333332")	// StringFrom ?
+	err = db.Debug().Updates(&yy_user).Error
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// delete
+	zz_user := Todos{Id:3}
+	err = db.Debug().Delete(&zz_user).Error
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("All've been finished.")
+
+}
+
+
+func Init() {
+
+	uri := ConnectMake()
+	
+	db, err = gorm.Open(mysql.Open(uri), &gorm.Config{})
+	if err != nil {
+		logrus.Fatal(err)
+	}
+	if err != nil {
+		logrus.Panic("strange!")
+	}
+	a_err := db.AutoMigrate(&Users{})
+	if a_err != nil {
+		 logrus.Fatal(a_err)
+		//logrus.Panic("UNABLE to create Users!")
+	}
+	b_err := db.AutoMigrate(&Todos{})
+	if b_err != nil {
+		logrus.Panic("UNABLE to create Todos!")
+	}
+}
+
+func ConnectMake() string {
+	viper.SetConfigName("uri")
+	viper.SetConfigType("json")
+	viper.AddConfigPath("./config/")
+	// which can be called multiple times to add possible search options
+	if err := viper.ReadInConfig(); err != nil {
+		logrus.Fatal(err)
+	}
+
+	loginInfo := viper.GetStringMapString("param")
+
+	dbArgs := loginInfo["username"] + ":" + loginInfo["password"] + "@(localhost)/" + loginInfo["database"] + "?charset=utf8mb4&parseTime=True&loc=Local"
+	//logrus.Panic(dbArgs)
+	// "@(localhost)/" or "@(127.0.0.1:3306)/" 
+	return dbArgs
+}
+
+

@@ -1,11 +1,11 @@
 package todo
 
-import(
-	"github.com/labstack/echo/v4"
-	"github.com/sirupsen/logrus"
-	"model/table"
+import (
 	"app/response"
+	"github.com/labstack/echo/v4"
+	"model/table"
 )
+
 var cnt_ int64
 
 func get(c echo.Context, idd int) {
@@ -14,6 +14,6 @@ func get(c echo.Context, idd int) {
 	er := db.Debug().Find(&x).Error
 	if er != nil {
 		// logrus.Panic("Find no id = " + string(idd))
-		response.ToResponse(c, 200, "Find no id = "+ + string(idd),)
+		response.ToResponse(c, 200, "Find no id = "+string(idd))
 	}
 }
