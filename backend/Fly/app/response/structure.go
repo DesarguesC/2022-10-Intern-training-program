@@ -1,6 +1,7 @@
 package response
 
-type err_meg struct {
-	Msg string `json:msg`
-	Code int64 `json:code`
+type Err_msg struct {
+	Code int64       `json:code`
+	Msg  string      `json:msg`
+	Data interface{} `json:data`
 }

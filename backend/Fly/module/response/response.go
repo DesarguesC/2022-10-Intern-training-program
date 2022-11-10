@@ -1,21 +1,15 @@
 package response
 
-import(
-	"net/http";
-	"github.com/labstack/echo/v4";
+import (
+	"Fly/app/response"
+	"github.com/labstack/echo/v4"
+	"net/http"
 )
 
-type Response struct {
-	Code int         `json:"code"`
-	Msg  string      `json:"msg"`
-	Data interface{} `json:"data"`
-}
-func ToResponse(c echo.Context, code int, msg string, data ...interface{}) error{
-	return c.JSON(http.StatusOK, Response{
+func MResponse(c echo.Context, code int64, msg string, data ...interface{}) error {
+	return c.JSON(http.StatusOK, response.Err_msg{
 		Code: code,
 		Msg:  msg,
 		Data: data,
 	})
 }
-
-// 手动copy 狗头保命

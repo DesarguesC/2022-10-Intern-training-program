@@ -10,16 +10,6 @@ import (
 	"gorm.io/gorm"
 )
 
-/*
-这两个变量必须全局，使用":="声明会被认为是临时变量
-之后遭到释放将出现空指针错误
-*/
-// ↑ utf8
-/*
-Both "db" and "err" must be declared globally or they'll be
-released. It leads to NULL pointer exception
-*/
-
 func DB_Init() {
 	uri := ConnectMake()
 	//

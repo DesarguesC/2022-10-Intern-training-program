@@ -7,6 +7,6 @@ import (
 func Auth(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		c.Set("uid", 114514)
-		return next(c)
+		return next(c) // 直接通过当前用户请求
 	}
 }
