@@ -3,21 +3,23 @@ package app
 import (
 	"github.com/labstack/echo/v4"
 	"Fly/app/net_utils"
-	"net/http"
+	//"net/http"
 	//"github.com/go-playground/validator";
 	//"encoding/json";
-	"log"
+	//"log"
 	//"flybitch/go-net/model"
 )
 
 var e *echo.Echo
+// 供全局使用的echo变量
 
 // 创建echo实例 -> 注册中间件 -> 注册用户路由 -> 启动http server -> accept请求
 
 func InitNetWork() {
 	e = echo.New()
 	e.HideBanner = true // 隐藏startup message
-
+	e.GET("/hello", net_utils.Ping)
+	e.Start("127.0.0.1:80") // localhost端口
 	e.Validator = 
 	
 

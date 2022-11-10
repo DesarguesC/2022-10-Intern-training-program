@@ -1,0 +1,7 @@
+github.com/sirupsen/logrus
+github.com/spf13/viper
+gorm.io/driver/mysql
+gorm.io/gorm
+github.com/go-playground/validator/v10
+github.com/labstack/echo/v4
+

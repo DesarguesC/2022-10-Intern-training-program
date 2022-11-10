@@ -1,13 +1,15 @@
 package net_utils
 
 import (
+	"fmt"
+	"github.com/labstack/echo/v4"
 	"io/ioutil"
 	"net/http"
+	//"github.com/go-playground/validator/v10"
+	"log"
 )
 
-
-
-func read_body(c echo.Context) error {
+func Read_body(c echo.Context) error {
 	defer c.Request().Body.Close()
 	body, err := ioutil.ReadAll(c.Request().Body)
 	if err != nil {
