@@ -7,5 +7,5 @@ import (
 
 func main() {
 	dbcontroller.DB_Init()
-	fmt.Println("Hello")
+	fmt.Println("Hello World!")
 }

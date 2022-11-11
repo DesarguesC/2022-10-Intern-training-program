@@ -18,4 +18,5 @@ func Read_body(c echo.Context) error {
 	fmt.Println(&body)
 	x := string(body)
 	return c.String(http.StatusOK, x)
+	// 直接打印
 }

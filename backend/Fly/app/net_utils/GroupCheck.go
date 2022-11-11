@@ -3,6 +3,7 @@ package net_utils
 import (
 	"Fly/app"
 	"Fly/app/middleware"
+	"Fly/app/net_utils/print"
 )
 
 func Check() {
@@ -10,5 +11,6 @@ func Check() {
 	// 一个组路由
 	api.Use(middleware.Auth)
 	api.GET("/Ping", Ping)
-	// 组路由的运行并不会持续，这里的Ping会在
+	api.GET("/", print.Read_body)
+	// 组路由调用并不会持续，这里的handle调用一次后就会失效继续执行之后的进程
 }

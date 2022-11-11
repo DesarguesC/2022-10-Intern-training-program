@@ -1,0 +1,6 @@
+{
+    "loginErr": {
+        "code": "-100",
+        "msg": "Incorrect User-Id or Password."
+    }
+}

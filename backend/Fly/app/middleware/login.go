@@ -10,3 +10,11 @@ func Auth(next echo.HandlerFunc) echo.HandlerFunc {
 		return next(c) // 直接通过当前用户请求
 	}
 }
+
+// BONUS
+
+func Check_Info(next echo.HandlerFunc) echo.HandlerFunc {
+	return func(c echo.Context) error {
+
+	}
+}

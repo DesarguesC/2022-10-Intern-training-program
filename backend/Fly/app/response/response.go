@@ -15,3 +15,5 @@ func MResponse(c echo.Context, code int64, msg string, data ...interface{}) erro
 		Data: data,
 	})
 }
+
+//	Replace original c.String

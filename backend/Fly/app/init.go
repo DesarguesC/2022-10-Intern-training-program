@@ -5,6 +5,7 @@ import (
 	"Fly/app/net_utils/print"
 	"Fly/utils"
 	"github.com/labstack/echo/v4"
+	"github.com/sirupsen/logrus"
 )
 
 var E *echo.Echo // 供全局使用的echo变量
@@ -29,14 +30,21 @@ func InitNetWork() {
 	//	complex api ↓	can be seen in Fly/app/net_utils/API.go
 
 	E.GET("/api/todo/add/:ti/:con", net_utils.Add_todo)
-	E.GET("/api/todo/get/:id", net_utils.Get_todo)
+	/*
+		e.g.	localhost/api/todo/add/:using/:hhhh
+		return -> "added: Todos Id = ..."
+	*/
+	E.GET("/api/todo/get/:uid", net_utils.Get_todo)
+	/*
+		e.g.	localhost/api/todo/get/:233
+		return -> "Todos: [id=233][...][...]..."
+	*/
+	E.GET("/api/login/:uid/:passwd", net_utils.Check_Login)
 
 	E.Start("127.0.0.1:80") // localhost端口
 
 	E.Validator = &utils.CustomValidator{}
-
-
-
+	logrus.Info("echo framework initialized")
 }
 
 /*
@@ -51,35 +59,5 @@ cmd运行go run turn-on.go后即启动服务器
 */
 
 func StartServer() {
-	E.Logger.Fatal(E.Start("..."))
+	E.Logger.Fatal(E.Start(":1323"))
 }
-
-//func main() {
-
-//e := echo.New()
-//e.GET("/hello", read_body)
-//e.Start("127.0.0.1:80")
-//fmt.Println("first")
-//
-// e.GET("/xyz", QueryParam)
-// e.Start("127.0.0.1:80")
-// fmt.Println("second")
-
-// server := http.Server {
-// 	Addr: "127.0.0.1:80",
-// }
-// http.HandleFunc("/hello-s", read_body)
-// server.ListenAndServe()
-// fmt.Println("third")
-
-//}
-
-// Print parameter 'query' directly
-
-// func read_body(rw http.ResponseWriter, req *http.Request) {
-// 	length := req.ContentLength
-// 	body := make([]byte, length)
-// 	req.Body.Read(body)
-// 	fmt.Fprintln(rw, body)
-// 	fmt.Println(body)
-// }
