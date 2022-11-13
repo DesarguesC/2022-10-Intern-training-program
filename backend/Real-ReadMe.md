@@ -1,0 +1,5 @@
+## Fly
+新的版本实现了更多功能，应该把后端入门里要求的功能基本都实现了，做了login BONUS检测身份的中间件（原来Auth中间件也保留了，如需调用改一个函数名即可）。整个后端在IDEA-GoLand环境下书写，数据库连接等操作通过cmd运行单独的main已经由curl调试过，见turn-on-localhost文件夹。在GoLand运行时出现了'import cycle not allowed'问题，原因是各个项目内各个文件夹分块还不够清晰，网上有提到在代码块书写新的接口来替代imoprt，但是个人感觉很麻烦甚至打算直接把用到的功能剪切到需要的文件夹：这部分代码结构还需要调整。
+
+项目架构之外的任务(如操作MySQL命令代码等)仍然存放在database-operation中，原来的real-backend文件夹中的内容基本可以忽略
+
