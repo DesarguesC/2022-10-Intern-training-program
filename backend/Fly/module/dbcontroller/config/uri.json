@@ -1,7 +1,7 @@
 {
 	"param": {
-		"username": "root",
-		"password": "123456",
+		"username": "todo",
+		"password": "test",
 		"database": "todo"
 	}
 }
