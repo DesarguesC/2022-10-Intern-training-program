@@ -2,7 +2,7 @@ package middleware
 
 import (
 	"Fly/app/response"
-	"Fly/utils"
+	"Fly/app/utils"
 	"github.com/go-playground/validator/v10"
 	"github.com/labstack/echo/v4"
 	"github.com/spf13/viper"

@@ -4,7 +4,7 @@ import (
 	"Fly/app/middleware"
 	"Fly/app/net_utils"
 	"Fly/app/net_utils/print"
-	"Fly/utils"
+	"Fly/app/utils"
 	"github.com/labstack/echo/v4"
 	"github.com/sirupsen/logrus"
 )

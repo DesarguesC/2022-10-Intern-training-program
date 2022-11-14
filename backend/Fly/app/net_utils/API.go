@@ -1,8 +1,8 @@
 package net_utils
 
 import (
+	"Fly/app/base"
 	"Fly/app/response"
-	"Fly/module/dbcontroller/base"
 	"github.com/labstack/echo/v4"
 	"github.com/spf13/viper"
 	"log"

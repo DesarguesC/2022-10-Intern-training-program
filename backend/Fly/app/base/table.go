@@ -2,6 +2,8 @@ package base
 
 import "gorm.io/gorm"
 
+// table
+
 var (
 	Db  *gorm.DB
 	Err error
@@ -17,7 +19,6 @@ Both "Db" and "Err" must be declared globally or they'll be
 released. It leads to NULL pointer exception
 */
 
-// table
 type Users struct {
 	//gorm.Model
 	Id     uint `gorm:"primary_key"`
